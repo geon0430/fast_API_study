@@ -1,15 +1,14 @@
 from fastapi import APIRouter
-from model import Tudo
 
 tudo_router = APIRouter()
 
 tudo_list=[]
 
 @tudo_router.post("/tudo")
-async def add_tudo(tudo: Tudo) ->dict:
+async def add_tudo(tudo:dict) ->dict:
     tudo_list.append(tudo)
     return {
-            "message" : "todo added sucessfully."
+            "message": "tudo added succesfully."
     }
 
 @tudo_router.get("/tudo")
