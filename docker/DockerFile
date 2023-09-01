@@ -1,0 +1,11 @@
+FROM nvcr.io/nvidia/pytorch:23.01-py3
+
+RUN mkdir /workspace/src/app
+WORKDIR /workspace/src/app
+
+RUN apt-get update && apt-get -y upgrade
+RUN pip install fastapi uvicorn
+
+ADD . /workspace/src/app
+CMD ["python", "hellow.py"]
+
