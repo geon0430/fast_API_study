@@ -1,11 +1,10 @@
 FROM nvcr.io/nvidia/pytorch:23.01-py3
 
-RUN mkdir /workspace/src/app
-WORKDIR /workspace/src/app
+RUN mkdir -p /workspace
+WORKDIR /workspace
 
 RUN apt-get update && apt-get -y upgrade
 RUN pip install fastapi uvicorn
 
-ADD . /workspace/src/app
-CMD ["python", "hellow.py"]
+RUN git clone https://github.com/geon0430/fast_API_study.git
 
