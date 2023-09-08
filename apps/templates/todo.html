@@ -7,41 +7,26 @@
         <form method="post">
             <div class="col-auto">
                 <div class="input-group mb-3">
-                    <input aria-describedby="button-addon2" aria-label="Add a todo" class="form-control" name="item"
-                           placeholder="Purchase Packt's Python workshop course" type="text"
-                           value="{{ item }}"/>
+                    <input aria-describedby="button-addon2" aria-label="Enter video path or URL" class="form-control" name="video_source"
+                           placeholder="Enter local path or URL to the video" type="text"
+                           value="{{ video_source }}"/>
                     <button class="btn btn-outline-primary" data-mdb-ripple-color="dark" id="button-addon2"
                             type="submit">
-                        Add Todo
+                        Load Video
                     </button>
                 </div>
             </div>
         </form>
     </section>
-    {% if todo %}
+    {% if video_source %}
     <article class="card container-fluid">
         <br/>
-        <h4>Todo ID: {{ todo.id }} </h4>
-        <p>
-            <strong>
-                Item: {{ todo.item }}
-            </strong>
-        </p>
+        <video width="320" height="240" controls>
+            <source src="{{ video_source }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </article>
-    {% else %}
-    <section class="container-fluid">
-        <h2 align="center">Todos</h2>
-        <br>
-        <div class="card">
-            <ul class="list-group list-group-flush">
-                {% for todo in todos %}
-                <li class="list-group-item">
-                    {{ loop.index }}. <a href="/todo/{{ loop.index }}"> {{ todo.item }} </a>
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
-        {% endif %}
-    </section>
+    {% endif %}
 </main>
 {% endblock %}
+
